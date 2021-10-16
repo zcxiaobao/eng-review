@@ -7,7 +7,10 @@ import "vant/lib/index.css";
 import "@/common/styles/index.less";
 import { Tabbar, TabbarItem } from "vant";
 import { NavBar } from "vant";
+import { Grid, GridItem } from "vant";
 
+Vue.use(Grid);
+Vue.use(GridItem);
 Vue.use(NavBar);
 Vue.use(Tabbar);
 Vue.use(TabbarItem);
