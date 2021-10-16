@@ -8,6 +8,7 @@ import "@/common/styles/index.less";
 import { Tabbar, TabbarItem } from "vant";
 import { NavBar } from "vant";
 import { Grid, GridItem } from "vant";
+import "lib-flexible/flexible.js";
 
 Vue.use(Grid);
 Vue.use(GridItem);
