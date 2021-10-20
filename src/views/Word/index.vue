@@ -11,14 +11,14 @@
       <van-grid :border="false" :column-num="2">
         <van-grid-item>
           <div class="desc-detail">
-            <div class="title">单词</div>
-            <div class="text">19000</div>
+            <div class="title">单元数</div>
+            <div class="text">{{unit}}</div>
           </div>
         </van-grid-item>
         <van-grid-item>
           <div class="desc-detail">
-            <div class="title">单词</div>
-            <div class="text">19000</div>
+            <div class="title">单词数</div>
+            <div class="text">{{words.length}}</div>
           </div>
         </van-grid-item>
       </van-grid>
@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 export default {
     data() {
         return {
@@ -66,9 +66,14 @@ export default {
             this.setWordRecite(true);
         },
     },
+    computed: {
+        ...mapGetters(['words', 'unit']),
+    },
 };
 </script>
 <style lang="less" scoped>
+@import '~@/common/styles/variable';
+
 .word-desc {
     margin: 20px 45px;
     box-shadow: 0 0 1px #eee;
@@ -78,11 +83,13 @@ export default {
         justify-content: flex-start;
         align-items: center;
         .title {
-            margin-bottom: 6px;
+            margin-bottom: 10px;
+            font-size: @font-small-size;
         }
         .text {
             font-size: 16px;
             font-weight: bold;
+            font-size: @font-middle-size;
         }
     }
 }

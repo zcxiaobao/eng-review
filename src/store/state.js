@@ -4,6 +4,7 @@ const state = {
   wordReciteShow: false,
   name: 1,
   engToChn: dict.dictEngToChn,
-  words: dict.words
+  words: dict.words,
+  unit: 1
 };
 export default state;
