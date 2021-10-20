@@ -1,5 +1,9 @@
+import dict from "../common/data/words";
+
 const state = {
-  showWordRecite: false,
-  name: 1
+  wordReciteShow: false,
+  name: 1,
+  engToChn: dict.dictEngToChn,
+  words: dict.words
 };
 export default state;
