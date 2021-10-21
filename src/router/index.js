@@ -1,7 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Word from "@/views/Word";
-
+import WordRecite from "@/views/WordRecite";
+// import WordDetail from "@/components/WordRecite/WordDetail";
 Vue.use(VueRouter);
 
 const routes = [
@@ -14,6 +15,21 @@ const routes = [
     path: "/words",
     name: "Word",
     component: Word
+  },
+  {
+    path: "/word-recite",
+    name: "Word",
+    component: WordRecite,
+    children: [
+      {
+        path: "detail",
+        component: () => import("../components/WordRecite/WordDetail")
+      },
+      {
+        path: "sum",
+        component: () => import("../components/WordRecite/WordSummary")
+      }
+    ]
   },
   {
     path: "/sentences",

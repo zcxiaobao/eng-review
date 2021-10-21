@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
 export default {
     data() {
         return {
@@ -54,7 +54,6 @@ export default {
         };
     },
     methods: {
-        ...mapActions(['setWordRecite']),
         checkAll() {
             this.$refs.checkboxGroup.toggleAll(true);
         },
@@ -62,8 +61,7 @@ export default {
             this.$refs.checkboxGroup.toggleAll();
         },
         wordReciteShow() {
-            console.log(1);
-            this.setWordRecite(true);
+            this.$router.push({ path: '/word-recite/detail' });
         },
     },
     computed: {
