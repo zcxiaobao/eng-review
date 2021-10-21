@@ -1,1 +1,1 @@
-// export const SET_WORDRECITE = "SET_WORDRECITE";
+export const SET_ERRORWORDS = "SET_ERRORWORDS";

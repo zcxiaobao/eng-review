@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import { shuffle } from '@/common/js/util';
 export default {
     data() {
@@ -48,6 +48,7 @@ export default {
         };
     },
     methods: {
+        ...mapActions(['setErrorWords']),
         showExplainOrNext() {
             if (this.promptIndex === 0) {
                 this.promptIndex = 2;
@@ -55,16 +56,20 @@ export default {
                 this.index++;
                 this.promptIndex = 0;
                 if (this.index === this.wordLen) {
-                    console.log('结束');
+                    this.$router.push('/word-recite/sum');
                 }
             }
         },
         showPrompt() {
             this.promptIndex++;
+            if (this.promptIndex == 1) {
+                this.setErrorWords(this.nowWord);
+                console.log(this.errorWords);
+            }
         },
     },
     computed: {
-        ...mapGetters(['wordReciteShow', 'engToChn', 'words']),
+        ...mapGetters(['wordReciteShow', 'engToChn', 'words', 'errorWords']),
         wordLen() {
             return this.words.length;
         },

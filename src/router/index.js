@@ -2,7 +2,6 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Word from "@/views/Word";
 import WordRecite from "@/views/WordRecite";
-// import WordDetail from "@/components/WordRecite/WordDetail";
 Vue.use(VueRouter);
 
 const routes = [

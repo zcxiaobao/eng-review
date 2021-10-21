@@ -4,6 +4,7 @@ const state = {
   name: 1,
   engToChn: dict.dictEngToChn,
   words: dict.words,
-  unit: 1
+  unit: 1,
+  errorWords: []
 };
 export default state;

@@ -73,7 +73,7 @@ export default {
 @import '~@/common/styles/variable';
 
 .word-desc {
-    margin: 20px 45px;
+    margin: 64px 45px;
     box-shadow: 0 0 1px #eee;
     .desc-detail {
         display: flex;
@@ -94,7 +94,7 @@ export default {
 .word-content {
     margin: 30px 45px;
     box-shadow: 0 0 1px #eee;
-    height: 400px;
+    height: 320px;
     background-color: #fff;
     border-radius: 20px;
     display: flex;

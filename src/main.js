@@ -20,7 +20,10 @@ import {
   Button,
   Checkbox,
   CheckboxGroup,
-  Progress
+  Progress,
+  Empty,
+  List,
+  Cell
 } from "vant";
 
 Vue.use(Form);
@@ -36,6 +39,9 @@ Vue.use(Button);
 Vue.use(Checkbox);
 Vue.use(CheckboxGroup);
 Vue.use(Progress);
+Vue.use(Empty);
+Vue.use(List);
+Vue.use(Cell);
 
 // 修正click事件300ms延迟
 import fastclick from "fastclick";
