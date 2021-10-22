@@ -2,6 +2,15 @@ const path = require("path");
 const resolve = dir => path.join(__dirname, dir);
 
 module.exports = {
+  publicPath: "./",
+  devServer: {
+    open: true,
+    host: "0.0.0.0",
+    port: 8081,
+    https: false,
+    hotOnly: false,
+    proxy: null
+  },
   //路径简写
   chainWebpack: config => {
     // 设置快捷路径， @ 表示 'src' ，components 表示 'src/components'

@@ -25,9 +25,14 @@
     </div>
     <div class="word-content">
       <div class="content-wrap">
-        <van-field name="switch" label="全部单词" style="margin-bottom: 8px;">
+        <van-field
+          name="switch"
+          label="全部单词"
+          style="margin-bottom: 8px;"
+          @change="changeWholeWords()"
+        >
           <template #input>
-            <van-switch v-model="switchChecked" size="24" />
+            <van-switch v-model="allWordsChecked" size="24" />
           </template>
         </van-field>
         <van-field name="switch" label="中文模式">
@@ -44,28 +49,30 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 export default {
     data() {
         return {
             result: [],
-            chineseChecked: false,
+            allWordsChecked: false,
             switchChecked: false,
         };
     },
+    created() {
+        this.allWordsChecked = this.isWholeWords;
+    },
     methods: {
-        checkAll() {
-            this.$refs.checkboxGroup.toggleAll(true);
-        },
-        toggleAll() {
-            this.$refs.checkboxGroup.toggleAll();
-        },
+        ...mapActions(['setWholeWords']),
         wordReciteShow() {
             this.$router.push({ path: '/word-recite/detail' });
         },
+        changeWholeWords() {
+            console.log(1);
+            this.setWholeWords(this.allWordsChecked);
+        },
     },
     computed: {
-        ...mapGetters(['words', 'unit']),
+        ...mapGetters(['words', 'unit', 'isWholeWords']),
     },
 };
 </script>
