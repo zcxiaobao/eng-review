@@ -6,7 +6,7 @@
         color="#1989fa"
         background="#ecf9ff"
         left-icon="info-o"
-        text="目前默认从词库中随机取100单词进行测验"
+        text="目前默认从词库中随机取50单词进行测验"
       />
       <van-grid :border="false" :column-num="2">
         <van-grid-item>
@@ -25,19 +25,14 @@
     </div>
     <div class="word-content">
       <div class="content-wrap">
-        <van-field
-          name="switch"
-          label="全部单词"
-          style="margin-bottom: 8px;"
-          @change="changeWholeWords()"
-        >
+        <van-field name="switch" label="全部单词" style="margin-bottom: 8px;">
           <template #input>
             <van-switch v-model="allWordsChecked" size="24" />
           </template>
         </van-field>
         <van-field name="switch" label="中文模式">
           <template #input>
-            <van-switch v-model="switchChecked" size="24" />
+            <van-switch v-model="chineseChecked" size="24" />
           </template>
         </van-field>
       </div>
@@ -55,24 +50,29 @@ export default {
         return {
             result: [],
             allWordsChecked: false,
-            switchChecked: false,
+            chineseChecked: false,
         };
     },
     created() {
         this.allWordsChecked = this.isWholeWords;
+        this.chineseChecked = this.isChinese;
     },
     methods: {
-        ...mapActions(['setWholeWords']),
+        ...mapActions(['setWholeWords', 'setIsChinese']),
         wordReciteShow() {
             this.$router.push({ path: '/word-recite/detail' });
         },
-        changeWholeWords() {
-            console.log(1);
-            this.setWholeWords(this.allWordsChecked);
-        },
     },
     computed: {
-        ...mapGetters(['words', 'unit', 'isWholeWords']),
+        ...mapGetters(['words', 'unit', 'isWholeWords', 'isChinese']),
+    },
+    watch: {
+        allWordsChecked(newVal) {
+            this.setWholeWords(newVal);
+        },
+        chineseChecked(newVal) {
+            this.setIsChinese(newVal);
+        },
     },
 };
 </script>

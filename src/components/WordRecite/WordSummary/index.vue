@@ -6,13 +6,17 @@
       description="你已全部掌握"
       v-show="errorWords.length === 0"
     />
-    <div class="errorWord" v-show="errorWords.length !== 0">
-      <div class="error-title tag-title">未掌握单词</div>
+    <div class="errorWord" ref="errorWord" v-show="errorWords.length !== 0">
+      <van-sticky :container="errorWord" :offset-top="46">
+        <div class="error-title tag-title">未掌握单词</div>
+      </van-sticky>
+
+      <div class="home-btn"></div>
       <van-list>
-        <van-cell :title="word" v-for="word in errorWords" :key="word" title-class="warn">
+        <van-cell :title="item.word" v-for="item in errorWords" :key="item.word" title-class="warn">
           <!-- 使用 right-icon 插槽来自定义右侧图标 -->
           <template #right-icon>
-            <span>{{engToChn[word].chn}}</span>
+            <span>{{item.exp}}</span>
           </template>
         </van-cell>
       </van-list>
@@ -58,11 +62,16 @@ export default {
         border-bottom: 1px solid #eee;
     }
 
-    .error-title {
-        // padding: 16px;
-    }
     .warn {
         color: #f00;
+    }
+    .error-title {
+        background-color: @color-detail;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        .tag-title {
+            margin-bottom: 0;
+        }
     }
 }
 </style>

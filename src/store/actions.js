@@ -5,3 +5,6 @@ export const setErrorWords = function({ commit }, word) {
 export const setWholeWords = function({ commit }, flag) {
   commit(types.SET_WHOLEWORDS, flag);
 };
+export const setIsChinese = function({ commit }, flag) {
+  commit(types.SET_ISCHINESE, flag);
+};

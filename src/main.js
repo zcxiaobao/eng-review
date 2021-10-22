@@ -23,7 +23,8 @@ import {
   Progress,
   Empty,
   List,
-  Cell
+  Cell,
+  Sticky
 } from "vant";
 
 Vue.use(Form);
@@ -42,6 +43,7 @@ Vue.use(Progress);
 Vue.use(Empty);
 Vue.use(List);
 Vue.use(Cell);
+Vue.use(Sticky);
 
 // 修正click事件300ms延迟
 import fastclick from "fastclick";

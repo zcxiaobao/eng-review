@@ -1,2 +1,3 @@
 export const SET_ERRORWORDS = "SET_ERRORWORDS";
 export const SET_WHOLEWORDS = "SET_WHOLEWORDS";
+export const SET_ISCHINESE = "SET_ISCHINESE";

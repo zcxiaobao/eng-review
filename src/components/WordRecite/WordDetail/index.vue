@@ -9,17 +9,17 @@
       </van-grid-item>
     </van-grid>
     <van-progress :percentage="percentage" stroke-width="2" :show-pivot="false" />
-    <div class="word-show">{{nowWord}}</div>
+    <div class="word-show">{{isChinese? nowChinese: nowWord}}</div>
     <transition name="fade">
-      <div class="case" v-show="promptIndex >= 1">
+      <div class="case" v-show="promptIndex >= 1 && !isChinese">
         <div class="case-title tag-title">英文解释</div>
         <div class="case-text">{{engToChn[nowWord].case}}</div>
       </div>
     </transition>
     <transition name="right">
       <div class="word-hide" v-show="promptIndex >= 2">
-        <div class="tag-title">中文</div>
-        <div class="explain-text">{{engToChn[nowWord].chn}}</div>
+        <div class="tag-title">{{isChinese? '英文': '中文'}}</div>
+        <div class="explain-text">{{isChinese? nowWord: engToChn[nowWord].chn}}</div>
       </div>
     </transition>
 
@@ -63,13 +63,25 @@ export default {
         showPrompt() {
             this.promptIndex++;
             if (this.promptIndex == 1) {
-                this.setErrorWords(this.nowWord);
-                console.log(this.errorWords);
+                if (this.isChinese) {
+                    this.promptIndex++;
+                }
+                this.setErrorWords({
+                    word: this.nowWord,
+                    exp: this.nowChinese,
+                });
             }
         },
     },
     computed: {
-        ...mapGetters(['wordReciteShow', 'engToChn', 'words', 'errorWords']),
+        ...mapGetters([
+            'wordReciteShow',
+            'engToChn',
+            'words',
+            'errorWords',
+            'isWholeWords',
+            'isChinese',
+        ]),
         wordLen() {
             return this.words.length;
         },
@@ -84,10 +96,17 @@ export default {
             }
         },
         reciteWords() {
-            return shuffle(this.words);
+            if (this.isWholeWords) {
+                return shuffle(this.words);
+            } else {
+                return shuffle(this.words).slice(0, 50);
+            }
         },
         nowWord() {
             return this.reciteWords[this.index];
+        },
+        nowChinese() {
+            return this.engToChn[this.nowWord].chn;
         },
     },
 };
