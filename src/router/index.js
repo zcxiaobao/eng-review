@@ -44,6 +44,11 @@ const routes = [
     path: "/contact",
     name: "Contact",
     component: () => import("../views/Contact")
+  },
+  {
+    // 会匹配所有路径
+    path: "*",
+    redirect: "/words"
   }
 ];
 

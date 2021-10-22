@@ -2,13 +2,16 @@
   <van-nav-bar
     title="英语复习"
     left-text="返回"
-    right-text="按钮"
     :fixed="true"
     left-arrow
     z-index="100"
     @click-left="onClickLeft"
-    @click-right="onClickRight"
-  />
+  >
+    <template #right>
+      <van-tag type="primary" size="large" style="margin-right: 6px;">单词表</van-tag>
+      <van-tag type="success" size="large" @click="toHome">首页</van-tag>
+    </template>
+  </van-nav-bar>
 </template>
 
 <script>
@@ -17,12 +20,15 @@ export default {
         onClickLeft() {
             this.$router.go(-1);
         },
-        onClickRight() {
-            console.log('按钮');
+        toHome() {
+            this.$router.push({ path: '/' });
         },
     },
 };
 </script>
 
-<style>
+<style lang="less" scoped>
+.link {
+    margin-left: 10px;
+}
 </style>

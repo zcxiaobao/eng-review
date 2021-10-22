@@ -24,7 +24,10 @@ import {
   Empty,
   List,
   Cell,
-  Sticky
+  Sticky,
+  DropdownMenu,
+  DropdownItem,
+  Tag
 } from "vant";
 
 Vue.use(Form);
@@ -44,6 +47,9 @@ Vue.use(Empty);
 Vue.use(List);
 Vue.use(Cell);
 Vue.use(Sticky);
+Vue.use(DropdownMenu);
+Vue.use(DropdownItem);
+Vue.use(Tag);
 
 // 修正click事件300ms延迟
 import fastclick from "fastclick";
