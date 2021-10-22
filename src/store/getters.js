@@ -4,3 +4,4 @@ export const unit = state => state.unit;
 export const errorWords = state => state.errorWords;
 export const isWholeWords = state => state.isWholeWords;
 export const isChinese = state => state.isChinese;
+export const sentences = state => state.sentences;

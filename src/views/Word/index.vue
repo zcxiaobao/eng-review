@@ -1,28 +1,6 @@
 <template>
-  <div class="card">
-    <div class="word-desc">
-      <van-notice-bar
-        scrollable
-        color="#1989fa"
-        background="#ecf9ff"
-        left-icon="info-o"
-        text="目前默认从词库中随机取50单词进行测验"
-      />
-      <van-grid :border="false" :column-num="2">
-        <van-grid-item>
-          <div class="desc-detail">
-            <div class="title">单元数</div>
-            <div class="text">{{unit}}</div>
-          </div>
-        </van-grid-item>
-        <van-grid-item>
-          <div class="desc-detail">
-            <div class="title">单词数</div>
-            <div class="text">{{words.length}}</div>
-          </div>
-        </van-grid-item>
-      </van-grid>
-    </div>
+  <div class="word-wrapper">
+    <card :text="目前默认从词库中随机取50单词进行测验" unit="1" descTitle="单元数" :nums="words.length"></card>
     <div class="word-content">
       <div class="content-wrap">
         <van-field name="switch" label="全部单词" style="margin-bottom: 8px;">
@@ -44,6 +22,7 @@
 </template>
 
 <script>
+import Card from '@/components/Card';
 import { mapGetters, mapActions } from 'vuex';
 export default {
     data() {
@@ -52,6 +31,9 @@ export default {
             allWordsChecked: false,
             chineseChecked: false,
         };
+    },
+    components: {
+        Card,
     },
     created() {
         this.allWordsChecked = this.isWholeWords;
@@ -78,26 +60,6 @@ export default {
 </script>
 <style lang="less" scoped>
 @import '~@/common/styles/variable';
-
-.word-desc {
-    margin: 64px 45px;
-    box-shadow: 0 0 1px #eee;
-    .desc-detail {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        .title {
-            margin-bottom: 10px;
-            font-size: @font-small-size;
-        }
-        .text {
-            font-size: 16px;
-            font-weight: bold;
-            font-size: @font-middle-size;
-        }
-    }
-}
 .word-content {
     margin: 30px 45px;
     box-shadow: 0 0 1px #eee;
