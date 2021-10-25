@@ -30,7 +30,7 @@ export default {
     props: {
         text: {
             type: String,
-            default: '目前默认从词库中随机取50单词进行测验',
+            default: '目前默认单词为所学单元单词，如需修改请去配置页面',
         },
         textShow: {
             type: Boolean,

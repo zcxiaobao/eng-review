@@ -1,6 +1,6 @@
 <template>
   <div class="word-wrapper">
-    <card :text="目前默认从词库中随机取50单词进行测验" unit="1" descTitle="单元数" :nums="words.length"></card>
+    <card :text="目前默认从词库中随机取50单词进行测验" :unit="unitNums" descTitle="单词数" :nums="wordNums"></card>
     <div class="word-content">
       <div class="content-wrap">
         <van-field name="switch" label="全部单词" style="margin-bottom: 8px;">
@@ -46,7 +46,7 @@ export default {
         },
     },
     computed: {
-        ...mapGetters(['words', 'unit', 'isWholeWords', 'isChinese']),
+        ...mapGetters(['isWholeWords', 'isChinese', 'unitNums', 'wordNums']),
     },
     watch: {
         allWordsChecked(newVal) {
