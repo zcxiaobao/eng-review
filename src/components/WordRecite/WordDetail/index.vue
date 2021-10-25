@@ -89,10 +89,10 @@ export default {
             return ((this.index + 1) / this.wordLen) * 100;
         },
         konwText() {
-            if (this.promptIndex === 0) {
-                return '我认识';
-            } else {
+            if (this.promptIndex === 2) {
                 return '下一个';
+            } else {
+                return '我认识';
             }
         },
         reciteWords() {
@@ -156,24 +156,6 @@ export default {
     }
     .case {
         margin: 0 30px 20px;
-
-        // .case-title {
-        //     font-size: @font-small-size;
-        //     position: relative;
-        //     // padding-left: 16px;
-        //     // margin-bottom: 10px;
-        //     &::before {
-        //         content: '';
-        //         width: 12px;
-        //         height: 12px;
-        //         background-color: #f00;
-        //         position: absolute;
-        //         left: 0;
-        //         top: 50%;
-        //         transform: translate3d(0, -50%, 0);
-        //     }
-        // }
-
         .case-text {
             font-size: @font-sm-small-size;
             line-height: 1.3;
@@ -183,7 +165,7 @@ export default {
     .btns {
         // margin: 0 auto;
         position: absolute;
-        bottom: 10px;
+        bottom: 20px;
         width: 75%;
         left: 50%;
         transform: translate3d(-50%, 0, 0);
